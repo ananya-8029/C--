@@ -7,27 +7,36 @@ class node{
     node* right;
     node* left;
 
+    //Contructor used to fill the data in the node
     node(int d){
         this->data=d;
         this->right=NULL;
         this->left=NULL;
     }
 };
+
+//Creating a tree
 /* 1
   3 5
 7 11 17 */
 node* buildTree(node* root){
+
     cout<<"Enter the data:"<<endl;
     int data;
     cin>>data;
+
     root=new node(data);
+
     if(data==-1){
         return NULL;
     }
+
     cout<<"For insertion in left of "<<data<<":"<<endl;
     root->left=buildTree(root->left);
+
     cout<<"For insertion in right of "<<data<<":"<<endl;
-    root->right=buildTree(root->right);    
+    root->right=buildTree(root->right);  
+      
     return root;
 }
 
@@ -88,19 +97,25 @@ void levelOfTraversing(node* root){
     }
 }
 
+//Driver Code
 int main(){  
 
     node* root=NULL;
+
     //Creation of Tree
     root=buildTree(root);
     //1 3 7 -1 -1 11 -1 -1 5 17 -1 -1 -1
+
+
     //level of Traversal
-    cout<<"Level of Traversal"<<endl;
+    cout<<"LevelOrder Traversal"<<endl;
     levelOfTraversing(root);
 
+    //Inorder traversal
     cout<<"Inorder Traversal"<<endl;
     inOrder(root);
     cout<<endl;
+    //Preorder traversal
     cout<<"Preorder Traversal"<<endl;
     preorder(root);
     cout<<endl;
