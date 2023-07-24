@@ -119,6 +119,8 @@ int main(){
     cout<<"Preorder Traversal"<<endl;
     preorder(root);
     cout<<endl;
+
+    //Postorder Traversal
     cout<<"Postorder Traversal"<<endl;
     postorder(root);
     return 0;
