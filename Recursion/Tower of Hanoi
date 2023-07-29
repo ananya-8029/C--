@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+//program to print steps to move discs and also calculating the total no. of steps
+
+//Recursive function
+void toh(int n,char A,char B,char C,int &count){
+    count++;
+    //base condition
+    if(n==1){
+        cout<<"Move disc "<<n<<" from "<<A<<" to "<<C<<endl;
+        return;
+    }
+    
+    //moving n-1 discs from source to helper
+    toh(n-1,A,C,B,count);
+    //moving nth disc from source to destination
+    cout<<"Move disc "<<n<<" from "<<A<<" to "<<C<<endl;
+    //moving the left n-1 disc in helper to destination 
+    toh(n-1,B,A,C,count);
+}
+
+
+//Driver Program
+int main(){
+    cout<<"Enter number of discs:"<<endl;
+    int n;
+    cin>>n;
+    //A:source B:helper C:destination
+    char source='A',helper='B',destination='C';
+    //to calculate total number of steps involved
+    int count=0;
+    toh(n,source,helper,destination,count);
+
+    cout<<"Total number of Moves: "<<count;
+    return 0;
+}
