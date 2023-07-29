@@ -82,7 +82,7 @@ int main()
     //when the graph is connected
     g.DFS(2, visited, ans);
 
-    cout<< "DFS travel:"<<endl;
+    cout<< "DFS traversal:"<<endl;
     for(auto i:ans){
         cout<<i<<" ";
     }
