@@ -14,7 +14,8 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-//This approach can be said as brute force approach where we simply do two level order traversals and plug in the reversed values in the second traversal.
+//This approach can be said as brute force approach where we simply do two level order traversals and plug in the reversed values in the second traversal. 
+//This approach used two traversals
 class Solution {
 public:
 
@@ -69,6 +70,32 @@ public:
             levelTraversal(root, map, k, k, l);
         }
 
+        return root;
+    }
+};
+
+//This approach uses one traversal where we simply swap the left node's value with the right node's value
+class Solution {
+public:
+    void levelOrderTraversal(TreeNode* leftNode, TreeNode* rightNode, int level){
+        if(leftNode==NULL || rightNode==NULL){
+            return;
+        }
+
+        if(level%2==0){
+            swap(leftNode->val,rightNode->val);
+        }
+
+        levelOrderTraversal(leftNode->left, rightNode->right, level+1);
+        levelOrderTraversal(leftNode->right, rightNode->left, level+1);
+    }
+
+    TreeNode* reverseOddLevels(TreeNode* root) {
+        if(root==NULL){
+            return NULL;
+        }
+
+        levelOrderTraversal(root->left, root->right, 0);
         return root;
     }
 };
