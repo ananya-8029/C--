@@ -46,17 +46,59 @@ int knapsack_memoized(vector<int>& weights, vector<int>& values, int W, int n, v
     }
 }
 
+
+//Top down Approach
+//In top down approach we omit all recursive calls and use the tables or we can say dp to calculate the results
+void topDownApproach(vector<int>& weights, vector<int>& values, int n, int W){
+    //Table for storing the data
+    //size = n+1 * W+1
+    vector<vector<int>> dp;
+
+    //the base condition of the recursion is converted to initialization in this approach
+    //initializing the 0th row and 0th column of the table with the base values, here the base value is 0
+    //NOTE: There can be any base value according to the given question
+    for(int i=0;i<n+1;i++){
+        for(int j=0;j<W+1;j++){
+            if(i==0 || j==0){
+                dp[i][j]=0;
+            }
+        }
+    }
+
+    //Now omitting the recursive calls
+    for(int i=1;i<n+1;i++){
+        for(int j=1;j<W+1;j++){
+
+            if(weights[i-1]<=j){
+                dp[i][j]=max(values[i-1]+dp[i-1][j-weights[i-1]], dp[i-1][j]);
+            }
+            else{
+                dp[i][j]=dp[i-1][j];
+            }
+        }
+    }
+
+    cout<<"The maximum profit we can attain is:"<<dp[n][W];
+}
+
+
+
 int main(){
     vector<int>values{1, 2, 3},weights{4, 5, 1};
     int W=4;
     int n=weights.size();
 
-    // int result=knapsack_recursive(weights, values, W, n);
-    // cout<<result;
+    int result1=knapsack_recursive(weights, values, W, n);
+    cout<<result1<<endl;
+
 
     //2D matrix where we initialized all n rows with a vector of W size and initialized all the elements of with -1
     vector<vector<int>> t (n+1, vector<int> (W+1, -1));
-    int result = knapsack_memoized(weights, values, W, n, t);
-    cout<<result;
+    int result2 = knapsack_memoized(weights, values, W, n, t);
+    cout<<result2<<endl;
+
+
+    topDownApproach(weights, values, n, W);
     return 0;
 }
+
