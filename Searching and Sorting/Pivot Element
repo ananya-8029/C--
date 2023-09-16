@@ -1,0 +1,30 @@
+class Solution {
+public:
+//Need to search the pivot element in rotated and sorted array with distinct elements
+    int search(vector<int>& nums, int target) {
+        int n=nums.size();
+        int start=0;
+        int end=nums.size()-1;
+
+        while(start<end){
+            int mid=start+(end-start)/2;
+            //1st Condition
+            if(nums[mid]>nums[mid+1] && mid+1<n){
+                return mid;
+            }
+            //2nd Condition
+            if(nums[mid-1]>nums[mid] && mid-1>0){
+                return mid-1;
+            }
+            //kaunse subarray me hai
+            if(nums[mid]<nums[start]){
+                end=mid-1;
+            }
+            else{
+                start=mid+1;
+            }
+        }
+//Case when we either have only one element or we have only a sorted array with no rotations
+        return start;
+    }
+};
