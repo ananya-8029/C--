@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-//Bit Masking Method
+//Bit Masking Method or Bit Manipulation
 void find_subsequence(string &str){
     int nums=pow(2,str.size());
     int i=0;
