@@ -1,0 +1,78 @@
+class Solution {
+public:
+    //#1 Recursion Approach - Exponential Time + Recursion Stack
+    int maximum_amountUsingRec(vector<int>& nums, int index){
+        //Base Condition
+        if(index>=nums.size()){
+            return 0;
+        }
+        
+        //Induction
+        //considering the money
+        int amt1=nums[index]+maximum_amountUsingRec(nums, index+2);
+
+        //not considering the money
+        int amt2=maximum_amountUsingRec(nums, index+1);
+
+        return max(amt1, amt2);
+    }
+
+    //#2 Top Down Approach - linear time + Recursion Stack
+    int maximum_amountUsingTopDown(vector<int>& nums, int index, vector<int>& dp){
+        //Base Condition
+        if(index < 0){
+            return 0;
+        }
+
+        if(index == 0){
+            return nums[index];
+        }
+
+        if(dp[index] != -1){
+            return dp[index];
+        }
+
+        //Induction
+        //considering the money
+        int amt1=nums[index]+maximum_amountUsingTopDown(nums, index-2, dp);
+
+        //not considering the money
+        int amt2=maximum_amountUsingTopDown(nums, index-1, dp);
+        return dp[index] = max(amt1, amt2);
+    }
+
+    //#3 Bottom Up Approach - No Recursion Stack
+    int maximum_amountUsingBottomUp(vector<int>& nums){
+        if(nums.size()==1){
+            return nums[0];
+        }
+        // step 1: 
+        vector<int> dp(nums.size(), 0);
+
+        // step 2:
+        dp[0]=nums[0];
+        
+        dp[1]=max(nums[0],nums[1]);
+
+        // step 3:
+        for(int i=2;i<dp.size();i++){
+            dp[i]=max(dp[i-1], nums[i]+dp[i-2]);
+        }
+        return dp[nums.size()-1];
+    }
+
+    int rob(vector<int>& nums) {
+
+        # 1.
+        int index=0;
+        return maximum_amountUsingRec(nums, index);
+
+
+        # 2.
+        vector<int> dp(nums.size()+1, -1);
+        return maximum_amountUsingTopDown(nums, nums.size()-1, dp);
+
+        # 3.
+        return maximum_amountUsingBottomUp(nums);
+    }
+};
