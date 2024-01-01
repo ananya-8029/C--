@@ -4,6 +4,8 @@
 
 This repository contains my practice implementations and solutions for various Data Structures and Algorithms (DSA) topics in C++.
 
+![GeeksforGeeks Logo](https://auth.geeksforgeeks.org/user/anaya206ot)
+
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -13,7 +15,12 @@ This repository contains my practice implementations and solutions for various D
 
 ## Introduction
 
-Briefly introduce your repository and its purpose. Mention that it includes implementations and solutions for DSA topics in C++.
+Welcome to my C++ repository dedicated to Data Structures and Algorithms (DSA) practice! This repository contains my implementations and solutions for a variety of DSA topics, aiming to provide a comprehensive resource for learning and practicing these fundamental concepts in C++.
+
+I've organized the repository to cover a wide range of DSA topics, including arrays, linked lists, stacks, queues, trees, graphs, sorting algorithms, searching algorithms, and more.
+
+Happy coding, and may your journey through the world of Data Structures and Algorithms be both enjoyable and educational!
+
 
 ## Topics
 
