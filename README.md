@@ -4,7 +4,7 @@
 
 This repository contains my practice implementations and solutions for various Data Structures and Algorithms (DSA) topics in C++.
 
-![GeeksforGeeks Logo](https://auth.geeksforgeeks.org/user/anaya206ot)
+![GeeksforGeeks Logo](https://github.com/ananya-8029/Cpp/blob/master/gfg.jpg)
 
 ## Table of Contents
 
